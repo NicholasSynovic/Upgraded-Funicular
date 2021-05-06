@@ -2,7 +2,7 @@ import argparse
 from argparse import Namespace
 
 
-def arguementHandler() -> Namespace:
+def argumentHandler() -> Namespace:
     parser = argparse.ArgumentParser(
         prog="Game Jame Story Gen Scraper",
         usage="A tool to scrape writing prompt forumns for ideas and to store them in a database.",
