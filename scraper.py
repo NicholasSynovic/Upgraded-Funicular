@@ -11,7 +11,9 @@ class Scraper:
     def __init__(self) -> None:
         args = argumentHandler()
         
-        self.subredditSet: list = ["WritingPrompts", "DirtyWritingPrompts"]
+        self.subredditSet: list = ["WritingPrompts", "DirtyWritingPrompts",
+        "ShortStories", "SimplePrompts", "Worldprompts", "worldbuilding",
+        "fantasywriters"]
         self.reddit: Reddit = praw.Reddit(
             client_id=args.client_id[0],
             client_secret=args.client_secret[0],
