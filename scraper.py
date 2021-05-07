@@ -23,7 +23,7 @@ class Scraper:
         self.reddit: Reddit = praw.Reddit(
             client_id=args.client_id[0],
             client_secret=args.client_secret[0],
-            user_agent="Game Jam Story Gen/0.1 by _Art1c_",
+            user_agent="Upgraded-Funicular/0.1 by NicholasSynovic",
         )
 
         self.outfile = args.outfile[0]
