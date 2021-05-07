@@ -47,8 +47,29 @@ def argumentHandler() -> Namespace:
             Can be generated at https://www.reddit.com/prefs/apps""",
     )
 
-    return parser.parse_args()
+    parser.add_argument(
+        "-i",
+        "--in-file",
+        nargs=1,
+        type=str,
+        required=False,
+        default=None,
+        help="""If specified, the content of this file is compared against the
+            new scraped content.
+            Must end in a .csv format"""
+    )
 
+    parser.add_argument(
+        "-o",
+        "--outfile",
+        nargs=1,
+        type=str,
+        required=True,
+        help="""The outfile of where the scraped content will go.
+            Must end in a .csv format"""
+    )
+
+    return parser.parse_args()
 
 if __name__ == "__main__":
     print(
