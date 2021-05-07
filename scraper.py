@@ -1,6 +1,7 @@
 import pandas
 import praw
 from pandas import DataFrame
+from praw import Reddit
 from progress.spinner import MoonSpinner
 
 from libs.cmdLineArgs import argumentHandler
@@ -12,10 +13,10 @@ class Scraper:
         args = argumentHandler()
 
         self.subredditSet: list = ["WritingPrompts", "DirtyWritingPrompts"]
-        self.reddit = praw.Reddit(
+        self.reddit: Reddit = praw.Reddit(
             client_id=args.client_id[0],
             client_secret=args.client_secret[0],
-            user_agent="GameJamStoryGen/0.1 by {}".format(args.username[0]),
+            user_agent="Game Jam Story Gen/0.1 by _Art1c_", 
         )
 
     def scrapeData(self) -> DataFrame:
