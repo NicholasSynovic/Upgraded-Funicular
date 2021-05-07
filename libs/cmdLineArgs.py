@@ -56,7 +56,7 @@ def argumentHandler() -> Namespace:
         default=None,
         help="""If specified, the content of this file is compared against the
             new scraped content.
-            Must end in a .csv format"""
+            Must end in a .csv format""",
     )
 
     parser.add_argument(
@@ -66,10 +66,11 @@ def argumentHandler() -> Namespace:
         type=str,
         required=True,
         help="""The outfile of where the scraped content will go.
-            Must end in a .csv format"""
+            Must end in a .csv format""",
     )
 
     return parser.parse_args()
+
 
 if __name__ == "__main__":
     print(
