@@ -29,15 +29,16 @@ class Scraper:
         self.outfile = args.outfile[0]
 
         try:
-            self.outDF = pandas.read_csv(args.in_file[0])
+            self.outDF = pandas.read_json(args.in_file[0])
         except TypeError:
             columnNames: list = ["Name", "Subreddit", "NSFW", "Author", "Title", "URL"]
-            self.outDF = pandas.DataFrame(columns=columnNames)
+            self.outDF: DataFrame = pandas.DataFrame(columns=columnNames)
 
     def scrapeData(self) -> DataFrame:
+        subreddit: str
         for subreddit in self.subredditSet:
             with MoonSpinner(
-                message="Getting the latest 1000 posts from {}...".format(subreddit)
+                message=f"Getting the latest 1000 posts from {subreddit}... "
             ) as spinner:
 
                 for post in self.reddit.subreddit(display_name=subreddit).new(

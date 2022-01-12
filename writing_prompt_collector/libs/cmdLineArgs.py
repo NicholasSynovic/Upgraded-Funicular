@@ -4,8 +4,8 @@ from argparse import Namespace
 
 def argumentHandler() -> Namespace:
     parser = argparse.ArgumentParser(
-        prog="Upgraded-Funicular",
-        usage="A tool to scrape writing prompt forumns for ideas and to store them in a database.",
+        prog="Writng Prompt Collector (WPC)",
+        usage="Collect and store writing prompts from Reddit subreddits"
         epilog="Created by Nicholas M. Synovic.",
     )
 
@@ -31,30 +31,23 @@ def argumentHandler() -> Namespace:
 
     parser.add_argument(
         "-i",
-        "--in-file",
+        "--in",
         nargs=1,
         type=str,
         required=False,
         default=None,
         help="""If specified, the content of this file is compared against the new scraped content.
-            Must end in a .csv format""",
+            Must end in a .json format""",
     )
 
     parser.add_argument(
         "-o",
-        "--outfile",
+        "--out",
         nargs=1,
         type=str,
         required=True,
         help="""The outfile of where the scraped content will go.
-            Must end in a .csv format""",
+            Must end in a .json format""",
     )
 
     return parser.parse_args()
-
-
-if __name__ == "__main__":
-    print(
-        """This file is not meant to be ran as a standalone program.
-    Please import this file into your application"""
-    )
