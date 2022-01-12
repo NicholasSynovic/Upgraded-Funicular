@@ -31,7 +31,7 @@ def argumentHandler() -> Namespace:
 
     parser.add_argument(
         "-i",
-        "--in",
+        "--input",
         nargs=1,
         type=str,
         required=False,
@@ -42,7 +42,7 @@ def argumentHandler() -> Namespace:
 
     parser.add_argument(
         "-o",
-        "--out",
+        "--output",
         nargs=1,
         type=str,
         required=True,

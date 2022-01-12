@@ -26,10 +26,10 @@ class Scraper:
             user_agent="Upgraded-Funicular/0.1 by NicholasSynovic",
         )
 
-        self.outfile = args.outfile[0]
+        self.outfile = args.out[0]
 
         try:
-            self.outDF = pandas.read_json(args.in_file[0])
+            self.outDF = pandas.read_json(args.input[0])
         except TypeError:
             columnNames: list = ["Name", "Subreddit", "NSFW", "Author", "Title", "URL"]
             self.outDF: DataFrame = pandas.DataFrame(columns=columnNames)
@@ -60,10 +60,12 @@ class Scraper:
 
                     spinner.next()
 
-        self.outDF.to_csv(self.outfile)
+        self.outDF.to_json(self.out)
         return self.outDF
 
-
-if __name__ == "__main__":
+def main()  ->  None:
     scraper = Scraper()
     data = scraper.scrapeData()
+
+if __name__ == "__main__":
+    main()
