@@ -5,7 +5,7 @@ from argparse import Namespace
 def argumentHandler() -> Namespace:
     parser = argparse.ArgumentParser(
         prog="Writng Prompt Collector (WPC)",
-        usage="Collect and store writing prompts from Reddit subreddits"
+        usage="Collect and store writing prompts from Reddit subreddits",
         epilog="Created by Nicholas M. Synovic.",
     )
 
@@ -37,7 +37,7 @@ def argumentHandler() -> Namespace:
         required=False,
         default=None,
         help="""If specified, the content of this file is compared against the new scraped content.
-            Must end in a .json format""",
+            Must end in a .csv""",
     )
 
     parser.add_argument(
@@ -47,7 +47,7 @@ def argumentHandler() -> Namespace:
         type=str,
         required=True,
         help="""The outfile of where the scraped content will go.
-            Must end in a .json format""",
+            Must end in a .csv""",
     )
 
     return parser.parse_args()

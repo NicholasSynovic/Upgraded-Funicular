@@ -10,6 +10,17 @@ from libs.cmdLineArgs import argumentHandler
 class Scraper:
     def __init__(self) -> None:
         args = argumentHandler()
+       
+        try:
+            if args.input[0][-3::] != "csv":
+                print("Invalid input file type. Must be .csv")
+                quit(1)
+        except Exception:
+            pass
+        
+        if args.output[0][-3::] != "csv":
+            print("Invalid output file type. Must be .csv")
+            quit(2)
 
         self.subredditSet: list = [
             "WritingPrompts",
@@ -26,10 +37,10 @@ class Scraper:
             user_agent="Upgraded-Funicular/0.1 by NicholasSynovic",
         )
 
-        self.outfile = args.out[0]
+        self.outfile = args.output[0]
 
         try:
-            self.outDF = pandas.read_json(args.input[0])
+            self.outDF = pandas.read_csv(args.input[0])
         except TypeError:
             columnNames: list = ["Name", "Subreddit", "NSFW", "Author", "Title", "URL"]
             self.outDF: DataFrame = pandas.DataFrame(columns=columnNames)
@@ -60,7 +71,7 @@ class Scraper:
 
                     spinner.next()
 
-        self.outDF.to_json(self.out)
+        self.outDF.to_csv(self.outfile, index=False)
         return self.outDF
 
 def main()  ->  None:
