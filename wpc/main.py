@@ -4,20 +4,20 @@ from pandas import DataFrame
 from praw import Reddit
 from progress.spinner import MoonSpinner
 
-from libs.cmdLineArgs import argumentHandler
+from wpc.libs.cmdLineArgs import argumentHandler
 
 
 class Scraper:
     def __init__(self) -> None:
         args = argumentHandler()
-       
+
         try:
             if args.input[0][-3::] != "csv":
                 print("Invalid input file type. Must be .csv")
                 quit(1)
         except Exception:
             pass
-        
+
         if args.output[0][-3::] != "csv":
             print("Invalid output file type. Must be .csv")
             quit(2)
@@ -74,9 +74,11 @@ class Scraper:
         self.outDF.to_csv(self.outfile, index=False)
         return self.outDF
 
-def main()  ->  None:
+
+def main() -> None:
     scraper = Scraper()
     data = scraper.scrapeData()
+
 
 if __name__ == "__main__":
     main()
